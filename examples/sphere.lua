@@ -37,7 +37,7 @@ function addon.examples.create3DSphereMarker(radius, count)
         marker:SetRotation(pitch, yaw, 0)
 
         marker:SetColor(zo_random(), zo_random(), zo_random(), 1)
-        marker:EnableVisualNormalVector()
+        --marker:EnableVisualNormalVector()
 
         marker:AddCallback(function(object, distanceToPlayer, distanceToCamera)
             local r, g, b = discoLightColor(GetGameTimeMilliseconds() + (100 * i))
