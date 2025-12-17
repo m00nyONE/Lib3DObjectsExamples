@@ -24,6 +24,7 @@ local function initialize()
     -- helper objects
     --local _ = addon.examples.createAxis(300)
 
+    --local _ = addon.examples.createObjectGroup()
     --local _ = addon.examples.createGroundMarkerArray(50)
     --local _ = addon.examples.createReactiveGroundMarkerArray(50)
     --local _ = addon.examples.createReactiveGroundMarkerConcentricArray(6, 6, 200, 200)
@@ -34,7 +35,7 @@ local function initialize()
     --local _ = addon.examples.createLineSphere(10)
     --local _ = addon.examples.createKubeOutOfLines(200)
     --local _ = addon.examples.createPointingArrowLine()
-    --local _ = addon.examples.create3DSphereMarker(500, 100)
+    --local _ = addon.examples.create3DSphereMarker(500, 150)
 
 end
 

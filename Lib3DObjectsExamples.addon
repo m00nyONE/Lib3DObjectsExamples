@@ -26,3 +26,4 @@ examples/reactiveFloatingMarkers.lua
 examples/unitMarker.lua
 examples/lines.lua
 examples/sphere.lua
+examples/objectGroups.lua
