@@ -17,6 +17,7 @@ function addon.examples.create3DSphereMarker(radius, count)
     local markers = {}
     local phi = ZO_PI * (3 - zo_sqrt(5)) -- golden angle in radians
     local _, centerX, centerY, centerZ = GetUnitRawWorldPosition("player")
+    local rotationPointX, rotationPointY, rotationPointZ = centerX, centerY + (radius * 3), centerZ
     for i = 0, count - 1 do
         local y = 1 - (i / (count - 1)) * 2 -- y goes from 1 to -1
         local radiusAtY = zo_sqrt(1 - y * y) -- radius at y
@@ -24,7 +25,7 @@ function addon.examples.create3DSphereMarker(radius, count)
         local x = zo_cos(theta) * radiusAtY
         local z = zo_sin(theta) * radiusAtY
         local offsetX, offsetY, offsetZ = x * radius, y * radius, z * radius
-        local marker = l3do.Marker:New(nil)
+        local marker = l3do.Marker:New("Lib3DObjects/textures/circle.dds")
         marker:SetPosition(centerX, centerY + radius, centerZ)
         marker:SetPositionOffset(offsetX, offsetY, offsetZ)
 
@@ -43,7 +44,6 @@ function addon.examples.create3DSphereMarker(radius, count)
             object:SetColor(r, g, b, 1)
         end)
 
-        local _, pX, pY, pZ = GetUnitRawWorldPosition("player")
         local beginTime = GetGameTimeMilliseconds()
         local startX, startY, startZ = marker:GetPosition()
         local startPitch, startYaw, startRoll = marker:GetRotation()
@@ -56,10 +56,15 @@ function addon.examples.create3DSphereMarker(radius, count)
             -- Always rotate from the original position/rotation
             object:SetPosition(startX, startY, startZ)
             object:SetRotation(startPitch, startYaw, startRoll)
-            object:RotateAroundPoint(pX, pY + 1000, pZ, angle, angle, angle)
+            object:RotateAroundPoint(rotationPointX, rotationPointY, rotationPointZ, angle, angle, angle)
         end)
         table.insert(markers, marker)
     end
+    local rotationPointMarker = l3do.Point:New(rotationPointX, rotationPointY, rotationPointZ)
+    rotationPointMarker:SetLabel("R")
+    rotationPointMarker:ShowPosition(true)
+    rotationPointMarker:SetColor(1, 1, 1, 1)
+    table.insert(markers, rotationPointMarker)
 
     return markers
 end
