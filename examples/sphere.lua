@@ -60,11 +60,24 @@ function addon.examples.create3DSphereMarker(radius, count)
         end)
         table.insert(markers, marker)
     end
+    local centerPoint = l3do.Point:New(centerX, centerY, centerZ)
+    centerPoint:SetLabel("C")
+    centerPoint:ShowPosition(true)
+    centerPoint:SetColor(1, 1, 1, 1)
+    centerPoint:AddCallback(function(object, distanceToPlayer, distanceToCamera)
+        local numMarkers = #markers
+        local sumX, sumY, sumZ = 0, 0, 0
+        for _, marker in ipairs(markers) do
+            local posX, posY, posZ = marker:GetFullPosition()
+            sumX, sumY, sumZ = sumX + posX, sumY + posY, sumZ + posZ
+        end
+        object:SetPosition(sumX / numMarkers, sumY / numMarkers, sumZ / numMarkers)
+    end)
+
     local rotationPointMarker = l3do.Point:New(rotationPointX, rotationPointY, rotationPointZ)
     rotationPointMarker:SetLabel("R")
     rotationPointMarker:ShowPosition(true)
     rotationPointMarker:SetColor(1, 1, 1, 1)
-    table.insert(markers, rotationPointMarker)
 
     return markers
 end
