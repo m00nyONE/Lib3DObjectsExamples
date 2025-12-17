@@ -16,7 +16,7 @@
 ; You can read the full terms at https://account.elderscrollsonline.com/add-on-terms
 
 
-Lib3DObjects-Examples.lua
+Lib3DObjectsExamples.lua
 
 # Examples
 examples/helper.lua

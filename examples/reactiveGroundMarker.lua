@@ -61,7 +61,7 @@ end
 --- @param radiusStart number Radius of the first ring.
 --- @param radiusStep number Increase in radius for each subsequent ring.
 --- @return table Table of created reactive ground markers.
-function lib.examples.createReactiveGroundMarkerConcentricArray(ringCount, markersStart, radiusStart, radiusStep)
+function addon.examples.createReactiveGroundMarkerConcentricArray(ringCount, markersStart, radiusStart, radiusStep)
     local markers = {}
     local _, centerX, centerY, centerZ = GetUnitRawWorldPosition("player")
 
@@ -76,7 +76,7 @@ function lib.examples.createReactiveGroundMarkerConcentricArray(ringCount, marke
             local offsetY = 0
             local offsetZ = radius * math.sin(angle)
 
-            local reactiveMarker = lib.GroundMarker:New(nil, centerX + offsetX, centerY + offsetY, centerZ + offsetZ)
+            local reactiveMarker = l3do.GroundMarker:New(nil, centerX + offsetX, centerY + offsetY, centerZ + offsetZ)
             reactiveMarker:AddCallback(radiusTrigger())
             reactiveMarker:AddCallback(continuousRotation())
 
