@@ -79,5 +79,15 @@ function addon.examples.create3DSphereMarker(radius, count)
     rotationPointMarker:ShowPosition(true)
     rotationPointMarker:SetColor(1, 1, 1, 1)
 
+    local arrow = l3do.Line:New("Lib3DObjects/textures/arrow.dds", centerX, centerY, centerZ, rotationPointX, rotationPointY, rotationPointZ)
+    arrow:SetColor(1, 1, 1, 1)
+    arrow:SetLineWidth(50)
+    arrow:AddCallback(function(object, distanceToPlayer, distanceToCamera)
+        local posX, posY, posZ = centerPoint:GetPosition()
+        local rotX, rotY, rotZ = rotationPointMarker:GetPosition()
+        object:SetStartPoint(posX, posY, posZ)
+        object:SetEndPoint(rotX, rotY, rotZ)
+    end)
+
     return markers
 end
