@@ -26,8 +26,7 @@ function addon.examples.create3DSphereMarker(radius, count)
         local z = zo_sin(theta) * radiusAtY
         local offsetX, offsetY, offsetZ = x * radius, y * radius, z * radius
         local marker = l3do.Marker:New("Lib3DObjects/textures/circle.dds")
-        marker:SetPosition(centerX, centerY + radius, centerZ)
-        marker:SetPositionOffset(offsetX, offsetY, offsetZ)
+        marker:SetPosition(centerX + offsetX, centerY + offsetY + radius, centerZ + offsetZ)
 
         -- rotate the control away from the center point
         local dx, dy, dz = offsetX, offsetY, offsetZ
