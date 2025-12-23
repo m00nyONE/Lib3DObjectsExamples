@@ -29,3 +29,6 @@ examples/lines.lua
 examples/sphere.lua
 examples/objectGroups.lua
 examples/iconCloud.lua
+examples/unitMarkerPriorities.lua
+examples/unitESP.xml
+examples/unitESP.lua

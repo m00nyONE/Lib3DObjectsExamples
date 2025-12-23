@@ -37,6 +37,7 @@ local function initialize()
     --local _ = addon.examples.createPointingArrowLine()
     --local _ = addon.examples.create3DSphereMarker(500, 150)
     --local _ = addon.examples.createCloudOfIcons(2000)
+    --local _ = addon.examples.unitMarkerPriorities()
 
 end
 
