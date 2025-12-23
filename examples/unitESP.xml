@@ -1,0 +1,27 @@
+<GuiXml>
+    <Controls>
+        <Control name="l3do_examples_unitesp" virtual="true" space="WORLD">
+            <Dimensions x="150" y="300" />
+            <Anchor point="CENTER" relativeTo="GuiRoot" relativePoint="CENTER"/>
+            <Controls>
+                <Backdrop name="$(parent)_Frame" edgeColor="58a7a7" centerColor="00000000">
+                    <Edge file="EsoUI/Art/Miscellaneous/Gamepad/edgeframeGamepadBorder.dds" edgeFileWidth="128" edgeFileHeight="16" />
+                    <Insets left="4" top="4" right="-4" bottom="-4" />
+                    <AnchorFill/>
+                </Backdrop>
+                <Label name="$(parent)_Name" horizontalAlignment="CENTER" verticalAlignment="TOP" font="$(MEDIUM_FONT)|$(KB_24)|thick-outline" text="@name">
+                    <Dimensions x="200" y="30" />
+                    <Anchor point="BOTTOM" relativeTo="$(parent)" relativePoint="TOP"/>
+                </Label>
+                <Label name="$(parent)_Stats" horizontalAlignment="CENTER" verticalAlignment="TOP" font="$(MEDIUM_FONT)|$(KB_18)|thick-outline" text="|cFF0000100%|r |c0000FF100%|r |c00FF00100%|r">
+                    <Dimensions x="40" y="120" />
+                    <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPLEFT"/>
+                </Label>
+                <Label name="$(parent)_Position" horizontalAlignment="CENTER" verticalAlignment="TOP" font="$(MEDIUM_FONT)|$(KB_20)|thick-outline" text="X: 0.0 Y: 0.0 Z: 0.0">
+                    <Dimensions x="200" y="60" />
+                    <Anchor point="TOP" relativeTo="$(parent)" relativePoint="BOTTOM"/>
+                </Label>
+            </Controls>
+        </Control>
+    </Controls>
+</GuiXml>
