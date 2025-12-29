@@ -25,7 +25,6 @@ function addon.examples.unitMarkerPriorities()
     end)
     mechanicPriorityMarker:SetTexture("Lib3DObjects/textures/circle.dds")
     mechanicPriorityMarker:SetColor(0, 1, 0)
-    --mechanicPriorityMarker:RunAnimation()
     mechanicPriorityMarker:SetScale(0.75)
     mechanicPriorityMarker:SetAlpha(0.9)
 
