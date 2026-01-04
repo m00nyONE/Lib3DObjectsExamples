@@ -6,7 +6,11 @@ local l3do = Lib3DObjects
 function addon.examples.createSingleGroundMarker()
     local _, x, y, z = GetUnitRawWorldPosition("player")
     local marker = l3do.GroundMarker:New(nil, x, y, z)
-    marker:SetColor(1,0,0,1)
+    marker:SetColor(1, 1, 1, 1)
+
+    if l3do.RotationHelper then
+        local rotationHelper = l3do.RotationHelper:New(marker)
+    end
 
     return marker
 end

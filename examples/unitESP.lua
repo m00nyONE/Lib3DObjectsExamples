@@ -15,8 +15,10 @@ local function callback(obj, distanceToPlayer, distanceToCamera)
     local health, maxHealth, _ = GetUnitPower(unitTag, POWERTYPE_HEALTH)
     local healthPercent = (health / maxHealth) * 100
     local magicka = 0
+    local maxMagicka = 0
     local magickaPercent = 0
     local stamina = 0
+    local maxStamina = 0
     local staminaPercent = 0
     if AreUnitsEqual(unitTag, "player") then
         magicka, maxMagicka, _ = GetUnitPower(unitTag, POWERTYPE_MAGICKA)

@@ -3,7 +3,8 @@ local addon = _G[addon_name]
 
 local l3do = Lib3DObjects
 
-local AUTOROTATE_PLAYER = l3do.AUTOROTATE_PLAYER
+local AUTOROTATE_PLAYER_HEADING = l3do.AUTOROTATE_PLAYER_HEADING
+local AUTOROTATE_PLAYER_POSITION = l3do.AUTOROTATE_PLAYER_POSITION
 
 function addon.examples.createSingleUnitMarker()
     local marker = l3do.UnitMarker:New(nil, "player", nil)
@@ -22,11 +23,11 @@ function addon.examples.createUnitMarkerArray(count)
         local offsetX = radius * math.cos(angle)
         local offsetZ = radius * math.sin(angle)
 
-        local marker = l3do.UnitMarker:New(nil, "player", nil)
+        local marker = l3do.UnitMarker:New(nil, "player")
         marker:SetColor(math.random(), math.random(), math.random(), 1)
         marker:SetPositionOffsetX(offsetX)
         marker:SetPositionOffsetZ(offsetZ)
-        marker:SetAutoRotationMode(AUTOROTATE_PLAYER)
+        marker:SetAutoRotationMode(AUTOROTATE_PLAYER_HEADING)
         table.insert(markers, marker)
     end
 

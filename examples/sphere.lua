@@ -26,6 +26,7 @@ function addon.examples.create3DSphereMarker(radius, count)
         local z = zo_sin(theta) * radiusAtY
         local offsetX, offsetY, offsetZ = x * radius, y * radius, z * radius
         local marker = l3do.Marker:New("Lib3DObjects/textures/circle.dds")
+        --local marker = l3do.Texture3D:New("Lib3DObjects/textures/circle.dds")
         marker:SetPosition(centerX + offsetX, centerY + offsetY + radius, centerZ + offsetZ)
 
         -- rotate the control away from the center point
@@ -36,7 +37,6 @@ function addon.examples.create3DSphereMarker(radius, count)
         marker:SetRotation(pitch, yaw, 0)
 
         marker:SetColor(zo_random(), zo_random(), zo_random(), 1)
-        --marker:EnableVisualNormalVector()
 
         marker:AddCallback(function(object, distanceToPlayer, distanceToCamera)
             local r, g, b = discoLightColor(GetGameTimeMilliseconds() + (100 * i))
@@ -57,6 +57,9 @@ function addon.examples.create3DSphereMarker(radius, count)
             object:SetRotation(startPitch, startYaw, startRoll)
             object:RotateAroundPoint(rotationPointX, rotationPointY, rotationPointZ, angle, angle, angle)
         end)
+        if l3do.DirectionVectors then
+            --local DirectionVectors = l3do.DirectionVectors:New(marker)
+        end
         table.insert(markers, marker)
     end
     local centerPoint = l3do.Point:New(centerX, centerY, centerZ)
@@ -87,6 +90,12 @@ function addon.examples.create3DSphereMarker(radius, count)
         object:SetStartPoint(posX, posY, posZ)
         object:SetEndPoint(rotX, rotY, rotZ)
     end)
+
+    local group = l3do.BaseObjectGroup:New(unpack(markers))
+    if l3do.BoundingBox then
+        local boundingBox = l3do.BoundingBox:New(group)
+        boundingBox:ShowPoints(true)
+    end
 
     return markers
 end

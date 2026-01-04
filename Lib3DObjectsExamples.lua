@@ -25,6 +25,7 @@ local function initialize()
     --local _ = addon.examples.createAxis(300)
 
     --local _ = addon.examples.createObjectGroup()
+    --local _ = addon.examples.createSingleGroundMarker()
     --local _ = addon.examples.createGroundMarkerArray(50)
     --local _ = addon.examples.createReactiveGroundMarkerArray(50)
     --local _ = addon.examples.createReactiveGroundMarkerConcentricArray(6, 6, 200, 200)

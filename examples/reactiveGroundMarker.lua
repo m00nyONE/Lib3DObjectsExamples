@@ -49,6 +49,12 @@ function addon.examples.createReactiveGroundMarkerArray(count)
         reactiveMarker:SetTexture("/art/fx/texture/arcanist_support03_wardring.dds")
         reactiveMarker:SetAlpha(1)
         reactiveMarker:SetColor(math.random(), math.random(), math.random())
+
+        if l3do.PositionAxis then
+            --local positionAxis = l3do.PositionAxis:New(centerX + offsetX, centerY + offsetY, centerZ + offsetZ)
+            --positionAxis:AttachToObject(reactiveMarker)
+        end
+
         table.insert(markers, reactiveMarker)
     end
 
