@@ -32,3 +32,4 @@ examples/iconCloud.lua
 examples/unitMarkerPriorities.lua
 examples/unitESP.xml
 examples/unitESP.lua
+examples/footsteps/footsteps.lua
