@@ -40,8 +40,8 @@ local function initialize()
     --local _ = addon.examples.createCloudOfIcons(2000)
     --local _ = addon.examples.unitMarkerPriorities()
     --local _ =  addon.examples.unitESP()
-    --local _ =  addon.examples.initializeFootsteps()
-    local _ =  addon.examples.createSingleBeam()
+    local _ =  addon.examples.initializeFootsteps()
+    --local _ =  addon.examples.createSingleBeam()
 
 end
 

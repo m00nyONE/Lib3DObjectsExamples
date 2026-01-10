@@ -6,8 +6,9 @@ local EM = GetEventManager()
 
 local footsteps = {}
 local lastFootstep = nil
-local footstepDistance = 200
+local footstepDistance = 150
 
+local maxFootsteps = 2000
 local step = 1
 local textureMap = {
     [1] = {0, 0.5, 0, 1},
@@ -20,16 +21,17 @@ local function createFootstep()
     if IsUnitSwimming("player") then return end
 
     step = step + 1
-    local footstep = l3do.Texture:New(nil, pX, pY + 5, pZ)
-    --local footstep = l3do.Texture3D:New(nil, pX, pY + 5, pZ)
+    local footstep = l3do.Texture:New(nil, pX, pY + 2, pZ, true) -- with depth buffer
     local index = step % 2 + 1
     local textureCoords = textureMap[index]
 
-    footstep:SetTexture("/art/fx/texture/footprint_ghostcat_01_4x4.dds", textureCoords[1], textureCoords[2], textureCoords[3], textureCoords[4])
-    --footstep:SetTexture(nil, textureCoords[1], textureCoords[2], textureCoords[3], textureCoords[4])
-    footstep:SetColor(1, 1, 1, 0.5)
-    footstep:SetHeight(200)
+    footstep:SetDimensions(30, 60)
+    footstep:SetTexture("Lib3DObjectsExamples/examples/footsteps/feet.dds", textureCoords[1], textureCoords[2], textureCoords[3], textureCoords[4])
+    --footstep:SetColor(0.6, 0.5, 0.4, 1) -- gray brown
+    footstep:SetColor(1, 0.4, 0.7, 1) -- pink
+    footstep:SetAlpha(0.8)
     footstep:SetDrawDistanceMeters(250)
+    footstep:SetFadeOutDistanceNear(0)
     footstep:RotateToPlayerHeading()
     footstep:RotateToGroundNormal()
     lastFootstep = footstep
@@ -43,9 +45,15 @@ local function onTick()
     if distance >= footstepDistance then
         createFootstep()
     end
+
+    if #footsteps > maxFootsteps then
+        local oldFootstep = table.remove(footsteps, 1)
+        oldFootstep:Destroy()
+    end
 end
 
-function addon.examples.initializeFootsteps()
+function addon.examples.initializeFootsteps(max)
+    maxFootsteps = max or 2000
     createFootstep()
 
     EM:RegisterForUpdate("Lib3DObjectsExamples_Footsteps", 10, onTick)
