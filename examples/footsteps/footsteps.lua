@@ -7,6 +7,7 @@ local EM = GetEventManager()
 local footsteps = {}
 local lastFootstep = nil
 local footstepDistance = 150
+local footLength = 60
 
 local maxFootsteps = 2000
 local step = 1
@@ -25,10 +26,11 @@ local function createFootstep()
     local index = step % 2 + 1
     local textureCoords = textureMap[index]
 
-    footstep:SetDimensions(30, 60)
+    footstep:SetDimensions(footLength, footLength * 2)
     footstep:SetTexture("Lib3DObjectsExamples/examples/footsteps/feet.dds", textureCoords[1], textureCoords[2], textureCoords[3], textureCoords[4])
     --footstep:SetColor(0.6, 0.5, 0.4, 1) -- gray brown
-    footstep:SetColor(1, 0.4, 0.7, 1) -- pink
+    --footstep:SetColor(1, 0.4, 0.7, 1) -- pink
+    footstep:SetColor(1, 0, 1, 1) -- purple
     footstep:SetAlpha(0.8)
     footstep:SetDrawDistanceMeters(250)
     footstep:SetFadeOutDistanceNear(0)
