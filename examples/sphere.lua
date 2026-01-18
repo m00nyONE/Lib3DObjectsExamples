@@ -62,6 +62,8 @@ function addon.examples.create3DSphereMarker(radius, count)
         end
         table.insert(markers, marker)
     end
+    local tracePoints = {}
+    local lastTraceTime = 0
     local centerPoint = l3do.Point:New(centerX, centerY, centerZ)
     centerPoint:SetLabel("C")
     centerPoint:ShowPosition(true)
@@ -74,6 +76,24 @@ function addon.examples.create3DSphereMarker(radius, count)
             sumX, sumY, sumZ = sumX + posX, sumY + posY, sumZ + posZ
         end
         object:SetPosition(sumX / numMarkers, sumY / numMarkers, sumZ / numMarkers)
+    end)
+    centerPoint:AddCallback(function(object, distanceToPlayer, distanceToCamera)
+        --if true then return end
+        local currentTime = GetGameTimeMilliseconds()
+        if currentTime - lastTraceTime <= 100 then return end
+
+        lastTraceTime = currentTime
+        local posX, posY, posZ = object:GetPosition()
+
+        local point = l3do.Point:New(posX, posY, posZ)
+        point:SetTexture("Lib3DObjects/textures/circle.dds")
+        point:SetColor(1, 1, 1, 0.5)
+        point:SetLabel("")
+        table.insert(tracePoints, point)
+        if #tracePoints > 25 then
+            local oldPoint = table.remove(tracePoints, 1)
+            oldPoint:Destroy()
+        end
     end)
 
     local rotationPointMarker = l3do.Point:New(rotationPointX, rotationPointY, rotationPointZ)
